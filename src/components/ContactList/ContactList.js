@@ -7,11 +7,11 @@ import Loader from '../Loader/Loader';
 export default function ContactList() {
   const filter = useSelector(state => state.filter);
 
-  const { data, isFetching } = useGetContactsQuery();
+  const { data, isFetching, isLoading } = useGetContactsQuery();
 
   return (
     <>
-      {isFetching && <Loader />}
+      {isLoading && <Loader />}
       <h2 className={s.title}>Contacts</h2>
       {data && !isFetching && (
         <ul>

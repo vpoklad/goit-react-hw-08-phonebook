@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import s from './ContactsForm.module.css';
+import s from './Form.module.css';
 
 import { useForm } from 'react-hook-form';
 import {
@@ -37,6 +37,7 @@ export default function ContactsForm() {
       <label className={s.label}>
         Name
         <input
+          className={s.input}
           type="text"
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
           {...register('name', {
@@ -56,22 +57,28 @@ export default function ContactsForm() {
       <label className={s.label}>
         Phone
         <input
+          className={s.input}
           type="tel"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           {...register('phone', {
+            minLength: 5,
             required: true,
             pattern:
               /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
           })}
-          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
         />
-        {errors?.number?.type === 'required' && (
+        {errors?.phone?.type === 'required' && (
           <p className={s.error}>This field is required</p>
         )}
-        {errors?.number?.type === 'pattern' && (
+        {errors?.phone?.type === 'minLength' && (
+          <p className={s.error}>Minimum 5 digits</p>
+        )}
+        {errors?.phone?.type === 'pattern' && (
           <p className={s.error}>Numeric characters only</p>
         )}
       </label>
       <Button
+        sx={{ width: '100%', borderRadius: 20, height: 40 }}
         variant="contained"
         type="submit"
         size="small"
