@@ -14,7 +14,7 @@ const onSubmit = data => {dispatch(operations.registerUser(data))
     
     return (
         <>
-            <div className={s.appLogo}></div>
+            
             
             <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
                 <label className={s.label}>Name

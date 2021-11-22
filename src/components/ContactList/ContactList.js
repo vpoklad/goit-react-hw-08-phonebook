@@ -3,11 +3,13 @@ import s from './ContactList.module.css';
 import { useGetContactsQuery } from '../../services/phoneBookAPI';
 import { useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
+import selectors from '../../redux/selectors';
 
 export default function ContactList() {
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector(selectors.getFilter);
+  const token = useSelector(selectors.getToken);
 
-  const { data, isFetching, isLoading } = useGetContactsQuery();
+  const { data, isFetching, isLoading } = useGetContactsQuery(token);
 
   return (
     <>

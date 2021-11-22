@@ -4,16 +4,21 @@ export const phoneBookApi = createApi({
   reducerPath: 'phoneBookApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com/',
+    configureHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ['Contacts'],
   endpoints: build => ({
     getContacts: build.query({
       query: () => `contacts`,
       providesTags: result =>
-        // is result available?
         result
-          ? // successful query
-            [
+          ? [
               ...result.map(({ id }) => ({ type: 'Contacts', id })),
               { type: 'Contacts', id: 'LIST' },
             ]

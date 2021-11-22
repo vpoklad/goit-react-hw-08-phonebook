@@ -22,7 +22,25 @@ const registerUser = createAsyncThunk('auth/registerUser', async userData => {
   }
 });
 
+const loginUser = createAsyncThunk('auth/login', async userData => {
+  try {
+    const { data } = await axios.post('/users/login', userData);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    alert(error);
+  }
+});
+const fetchData = createAsyncThunk('data/get', async () => {
+  try {
+    const { data } = await axios.get('/contacts');
+    return data;
+  } catch (error) {}
+});
+
 const operations = {
   registerUser,
+  loginUser,
+  fetchData,
 };
 export default operations;
