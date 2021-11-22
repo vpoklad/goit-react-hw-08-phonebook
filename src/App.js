@@ -3,6 +3,7 @@ import ContactList from './components/ContactList/ContactList';
 import Filter from './components/ContactList/Filter';
 import LoginForm from './components/Forms/LoginForm';
 import RegisterForm from './components/Forms/RegisterForm';
+import AppBar from './components/AppBar/AppBar';
 
 export default function App() {
   // componentDidMount() {
@@ -21,7 +22,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1 className="appTitle">Phonebook</h1>
+      <AppBar />
       <LoginForm />
       <RegisterForm />
       <ContactsForm />

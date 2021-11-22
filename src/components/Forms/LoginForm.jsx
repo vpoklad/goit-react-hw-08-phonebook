@@ -6,7 +6,7 @@ export default function LoginForm() {
             <div className={s.appLogo}></div>
             
             <form className={s.form}>
-                <label className={s.label}>Login
+                <label className={s.label}>Email
     <input className={s.input} title ="Input your email" type="email"  />
                 </label>
                 <label className={s.label}>Password                   

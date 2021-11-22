@@ -32,6 +32,8 @@
 
 .label {
   position: relative;
+}
+.label:not(:last-child) {
   margin-bottom: 25px;
 }
 
@@ -52,7 +54,7 @@
 
 .button {
   color: #ecf0f3;
-  margin-top: 20px;
+
   background: var(--mainColor);
   height: 40px;
   border-radius: 20px;
