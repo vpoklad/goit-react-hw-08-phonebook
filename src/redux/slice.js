@@ -9,9 +9,9 @@ const initialState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: {
+  reducers: {
     setCredentials: (state, { payload: { user, token } }) => {
-      state.name = user.name;
+      state.user = user;
       state.token = token;
       state.isLoggedIn = true;
     },

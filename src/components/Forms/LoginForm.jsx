@@ -1,20 +1,22 @@
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import s from './Form.module.css'
 import { setCredentials } from '../../redux/slice'
-import selectors from '../../redux/selectors'
-import { useNavigate } from 'react-router'
+
+import {useLoginMutation} from '../../services/phoneBookAPI'
 export default function LoginForm() {
-    const isLogged = useSelector(selectors.isLogin)    
-    const navigate = useNavigate();
+     
+    
     const{register, handleSubmit, reset, formState: { errors }}=useForm();
+    const [loginUser, {isSuccess }] = useLoginMutation()
     const dispatch = useDispatch();
-    const onSubmit = data => {dispatch(setCredentials(data))
+
+
+    const onSubmit = data => {loginUser(data).unwrap().then(fulfilled => dispatch(setCredentials(fulfilled)))
+        
         reset()}
 
-    if(isLogged){
-        navigate('/contacts', {replace: true}) 
-    }    
+   
     return (
         <>
         
