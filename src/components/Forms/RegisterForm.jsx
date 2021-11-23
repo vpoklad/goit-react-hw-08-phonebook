@@ -1,14 +1,15 @@
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import s from './Form.module.css'
-import operations from '../../redux/operations'
+import { setCredentials } from '../../redux/slice'
+
 
 export default function RegisterForm() {
 const{register, handleSubmit, reset, formState: { errors }}=useForm();
 const dispatch = useDispatch();
 // const onSubmit = data => {console.log(data);
 // reset()};
-const onSubmit = data => {dispatch(operations.registerUser(data))
+const onSubmit = data => {dispatch(setCredentials(data))
     reset()}
 
     

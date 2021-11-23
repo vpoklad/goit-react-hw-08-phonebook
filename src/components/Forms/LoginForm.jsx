@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import s from './Form.module.css'
-import operations from '../../redux/operations'
+import { setCredentials } from '../../redux/slice'
 import selectors from '../../redux/selectors'
 import { useNavigate } from 'react-router'
 export default function LoginForm() {
@@ -9,7 +9,7 @@ export default function LoginForm() {
     const navigate = useNavigate();
     const{register, handleSubmit, reset, formState: { errors }}=useForm();
     const dispatch = useDispatch();
-    const onSubmit = data => {dispatch(operations.loginUser(data))
+    const onSubmit = data => {dispatch(setCredentials(data))
         reset()}
 
     if(isLogged){
@@ -31,7 +31,7 @@ export default function LoginForm() {
                 </label>
                 <label className={s.label}>Password                    
     <input {...register("password", {required: true} )} className={s.input} title ="Input your password" type="password"  />
-    {errors?.name?.type === 'required' && (
+    {errors?.password?.type === 'required' && (
           <p className={s.error}>This field is required</p>
         )}
     

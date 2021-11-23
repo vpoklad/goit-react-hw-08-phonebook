@@ -60,20 +60,20 @@ export default function ContactsForm() {
           className={s.input}
           type="tel"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-          {...register('phone', {
+          {...register('number', {
             minLength: 5,
             required: true,
             pattern:
               /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
           })}
         />
-        {errors?.phone?.type === 'required' && (
+        {errors?.number?.type === 'required' && (
           <p className={s.error}>This field is required</p>
         )}
-        {errors?.phone?.type === 'minLength' && (
+        {errors?.number?.type === 'minLength' && (
           <p className={s.error}>Minimum 5 digits</p>
         )}
-        {errors?.phone?.type === 'pattern' && (
+        {errors?.number?.type === 'pattern' && (
           <p className={s.error}>Numeric characters only</p>
         )}
       </label>

@@ -6,7 +6,7 @@ import Filter from '../components/ContactList/Filter';
  export default function Contacts ()  {
 return(
     <>
-    {/* <ContactsForm />  */}
+    <ContactsForm /> 
     <Filter /> 
     <ContactList />
       </>

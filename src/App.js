@@ -5,7 +5,7 @@ import selectors from './redux/selectors';
 
 import LoginForm from './components/Forms/LoginForm';
 import RegisterForm from './components/Forms/RegisterForm';
-import AppBar from './components/Appbar/AppBar';
+import AppBar from './components/AppBar/AppBar';
 import Home from './pages/Home';
 import Contacts from './pages/Contacts';
 

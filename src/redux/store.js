@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import slice from './slice';
-import { filterReducer } from './reducer';
+
 import { phoneBookApi } from '../services/phoneBookAPI';
+import { filterSlice, authSlice } from './slice';
 
 export const store = configureStore({
   reducer: {
     [phoneBookApi.reducerPath]: phoneBookApi.reducer,
-    filter: filterReducer,
-    auth: slice.auth,
+    filter: filterSlice.reducer,
+    auth: authSlice.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(phoneBookApi.middleware),

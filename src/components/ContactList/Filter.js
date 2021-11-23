@@ -1,7 +1,7 @@
 import TextField from '@mui/material/TextField';
 // import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from '../../redux/actions';
+import { setFilter } from '../../redux/slice';
 
 export default function Filter() {
   const value = useSelector(state => state.filter);

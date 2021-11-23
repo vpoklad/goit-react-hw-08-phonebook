@@ -7,13 +7,12 @@ import selectors from '../../redux/selectors';
 
 export default function ContactList() {
   const filter = useSelector(selectors.getFilter);
-  const token = useSelector(selectors.getToken);
 
-  const { data, isFetching, isLoading } = useGetContactsQuery(token);
+  const { data, isFetching } = useGetContactsQuery();
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isFetching && <Loader />}
       <h2 className={s.title}>Contacts</h2>
       {data && !isFetching && (
         <ul>

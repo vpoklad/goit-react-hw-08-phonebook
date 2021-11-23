@@ -8,7 +8,7 @@ export default function ContactItem({ contact }) {
   return (
     <li className={s.item}>
       <span>
-        {contact.name}: <span>{contact.phone}</span>
+        {contact.name}: <span>{contact.number}</span>
       </span>
       <IconButton
         aria-label="delete"
