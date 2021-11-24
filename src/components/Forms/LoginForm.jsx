@@ -4,21 +4,27 @@ import s from './Form.module.css'
 import { setCredentials } from '../../redux/slice'
 
 import {useLoginMutation} from '../../services/phoneBookAPI'
+import toast from 'react-hot-toast';
+
 export default function LoginForm() {
      
     
     const{register, handleSubmit, reset, formState: { errors }}=useForm();
-    const [loginUser, {isSuccess }] = useLoginMutation()
+    const [loginUser] = useLoginMutation()
     const dispatch = useDispatch();
 
 
-    const onSubmit = data => {loginUser(data).unwrap().then(fulfilled => dispatch(setCredentials(fulfilled)))
+    const onSubmit = data => {loginUser(data).unwrap().then(fulfilled => {dispatch(setCredentials(fulfilled))
+        toast.success(`Welcome, ${fulfilled.user.name}`)}).catch( error => toast.error('Login or password is invalid!',{id: 'err',iconTheme: {
+            primary: '#e03c06',
+            secondary: '#ecf0f3',
+          }}) )
         
         reset()}
 
-   
-    return (
-        <>
+        return (
+            <>
+          
         
             
             

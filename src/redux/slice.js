@@ -16,12 +16,12 @@ export const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     setUser: (state, { payload }) => {
-      state.name = payload.name;
+      state.user.name = payload.name;
       state.isLoggedIn = true;
     },
     setLogout: (state, _) => {
       state.name = '';
-      state.token = '';
+      state.token = null;
       state.isLoggedIn = false;
     },
   },

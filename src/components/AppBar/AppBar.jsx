@@ -1,11 +1,22 @@
 import s from './AppBar.module.css';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,  useDispatch } from 'react-redux';
+import {useLogoutMutation} from '../../services/phoneBookAPI'
 import selectors from '../../redux/selectors';
+import {setLogout} from '../../redux/slice'
+
+
 export default function AppBar() {
 const isLogged =  useSelector(selectors.isLogin)
 const name = useSelector(selectors.getName)
+const [logOut] = useLogoutMutation();
+const dispatch = useDispatch();
 
+const handleLogout=()=> {
+  logOut()
+  dispatch(setLogout());
+
+}
   return (
 
     <div className={s.appbar}>
@@ -15,7 +26,7 @@ const name = useSelector(selectors.getName)
        <p>
          Hello, <span className={s.username}>{name}</span>
        </p>
-       <button type="button" className={s.logOutButton}>
+       <button type="button" onClick ={handleLogout} className={s.logOutButton}>
          Logout
        </button>
      </div>

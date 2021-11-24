@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-
+import { useEffect } from 'react';
 import selectors from './redux/selectors';
 
 import PublicRoutes from './components/routes/PublicRoutes';
@@ -10,12 +10,26 @@ import RegisterForm from './components/Forms/RegisterForm';
 import AppBar from './components/Appbar/AppBar';
 import Home from './pages/Home';
 import Contacts from './pages/Contacts';
-
+import { useGetUserQuery } from './services/phoneBookAPI';
+import { setUser } from './redux/slice';
+import { Toaster } from 'react-hot-toast';
+import { toastOptions } from './components/Notification/toastOptions';
 export default function App() {
+  const dispatch = useDispatch();
   const isAuth = useSelector(selectors.isLogin);
+  const token = useSelector(selectors.getToken);
+  const { data } = useGetUserQuery('', {
+    skip: token === null || (token && isAuth),
+  });
+
+  useEffect(() => {
+    if (isAuth) return;
+    data && dispatch(setUser(data));
+  }, [data, dispatch, isAuth]);
 
   return (
     <div className="app">
+      <Toaster toastOptions={toastOptions} />
       <AppBar />
       <Routes>
         <Route
