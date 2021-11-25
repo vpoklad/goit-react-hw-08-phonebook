@@ -31,10 +31,15 @@ p {
   align-items: center;
   background-color: #ecf0f3;
   padding: 15px;
-  width: 500px;
+  width: calc(100% - 15px);
   margin: 0 auto;
   margin-top: 30px;
   border-radius: 20px;
 
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+@media screen and (min-width: 515px) {
+  .app {
+    width: 500px;
+  }
 }
