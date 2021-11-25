@@ -4,18 +4,18 @@ import { useSelector,  useDispatch } from 'react-redux';
 import {useLogoutMutation} from '../../services/phoneBookAPI'
 import selectors from '../../redux/selectors';
 import {setLogout} from '../../redux/slice'
-
+import {useNavigate} from 'react-router-dom'
 
 export default function AppBar() {
 const isLogged =  useSelector(selectors.isLogin)
 const name = useSelector(selectors.getName)
 const [logOut] = useLogoutMutation();
 const dispatch = useDispatch();
-
+const navigate = useNavigate()
 const handleLogout=()=> {
   logOut()
   dispatch(setLogout());
-
+navigate('/')
 }
   return (
 
