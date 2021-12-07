@@ -1,2 +1,6 @@
-Выполнен рефакторинг кода приложения «Телефонная книга». 
-Подключен бекенд https://6193696ed3ae6d0017da854a.mockapi.io/contacts
+Формы: React Hook form
+работа с API: RTK Query
+Стилизация: neumorfism
+Нотификация React hot toast, стилизированы
+Состояние: Redux
+Работа с Local Storage: Persist Redux
