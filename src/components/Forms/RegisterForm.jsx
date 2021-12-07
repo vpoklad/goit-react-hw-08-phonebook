@@ -11,14 +11,14 @@ const [onRegister] = useSignupMutation()
 const{register, handleSubmit, reset, formState: { errors }}=useForm();
 const dispatch = useDispatch();
 
-const onSubmit = async (data) => {
-  try {
-    const userData = await onRegister(data).unwrap();
-    dispatch(setCredentials(userData));
-    reset()
-  } catch (error) { toast.error(error)
+const onSubmit = (data) => {
+  
+    onRegister(data).unwrap().then(fulfilled=>dispatch(setCredentials(fulfilled))).catch(e=> {if (e.status === 400) toast.error('Registration error',{id: 'err',iconTheme: {
+      primary: '#e03c06',
+      secondary: '#ecf0f3',
+    }}) }).finally(reset());
     
-  }
+ 
   
     }
 

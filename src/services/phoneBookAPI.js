@@ -55,6 +55,7 @@ export const phoneBookApi = createApi({
         method: 'POST',
         body: userData,
       }),
+      invalidatesTags: [{ type: 'Contacts', id: 'LIST' }],
     }),
     logout: build.mutation({
       query: () => ({
