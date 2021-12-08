@@ -11,11 +11,12 @@ const isLogged =  useSelector(selectors.isLogin)
 const name = useSelector(selectors.getName)
 const [logOut] = useLogoutMutation();
 const dispatch = useDispatch();
-const navigate = useNavigate()
+let navigate = useNavigate()
 const handleLogout=()=> {
-  logOut()
-  dispatch(setLogout());
-navigate('/')
+  logOut().unwrap().then(()=>{dispatch(setLogout());
+    navigate('/');});
+  
+  
 }
   return (
 
