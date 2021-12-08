@@ -14,10 +14,7 @@ const dispatch = useDispatch();
 let navigate = useNavigate()
 const handleLogout=()=> {
   logOut().unwrap().then(()=>{dispatch(setLogout());
-    navigate('/');});
-  
-  
-}
+    navigate('/');})}
   return (
 
     <div className={s.appbar}>
